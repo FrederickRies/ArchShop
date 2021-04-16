@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ArchShop.Backend.Ntier.Data
+namespace ArchShop.Backend.Data
 {
     public class Delivery
     {

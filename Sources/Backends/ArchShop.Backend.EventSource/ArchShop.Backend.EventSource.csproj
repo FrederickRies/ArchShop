@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\Commands\" />
-    <Folder Include="Contexts\Deliveries\" />
-    <Folder Include="Contexts\Products\" />
-    <Folder Include="Contexts\Customers\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
 

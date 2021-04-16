@@ -3,9 +3,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace ArchShop.Backend.Ntier.Controllers
+namespace ArchShop.Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,6 +1,6 @@
 using System;
 
-namespace ArchShop.Backend.Ntier
+namespace ArchShop.Backend
 {
     public class WeatherForecast
     {

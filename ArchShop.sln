@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{43E0B89E-1659-4DF3-9BC8-A2FD1550B8A1}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
+		Directory.Build.props = Directory.Build.props
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
 	EndProjectSection
@@ -18,11 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchShop.Blazor", "Sources\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backends", "Backends", "{5B137004-334A-4AF0-BF38-F25A12D9EC6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchShop.Backend.Ntier", "Sources\Backends\ArchShop.Backend.Ntier\ArchShop.Backend.Ntier.csproj", "{57EE6738-8C9E-45C1-9ADE-0CAA1C895A1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchShop.Backend.Ntier", "Sources\Backends\ArchShop.Backend.Ntier\ArchShop.Backend.Ntier.csproj", "{57EE6738-8C9E-45C1-9ADE-0CAA1C895A1C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{86447978-3C49-405C-870C-7031B10FFE42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchShop.Backend.Cqrs", "Sources\Backends\ArchShop.Backend.Cqrs\ArchShop.Backend.Cqrs.csproj", "{BDBC65F5-2694-4180-9791-F5A091C72A82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchShop.Backend.Cqrs", "Sources\Backends\ArchShop.Backend.Cqrs\ArchShop.Backend.Cqrs.csproj", "{BDBC65F5-2694-4180-9791-F5A091C72A82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchShop.Backend.EventSource", "Sources\Backends\ArchShop.Backend.EventSource\ArchShop.Backend.EventSource.csproj", "{B1521463-F3F7-48F9-B405-9BCD7D4AD8BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchShop.GenericHost", "Sources\Backends\ArchShop.GenericHost\ArchShop.GenericHost.csproj", "{D2980CB7-DB92-4F7A-9260-5864889D3D03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +47,14 @@ Global
 		{BDBC65F5-2694-4180-9791-F5A091C72A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDBC65F5-2694-4180-9791-F5A091C72A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDBC65F5-2694-4180-9791-F5A091C72A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1521463-F3F7-48F9-B405-9BCD7D4AD8BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1521463-F3F7-48F9-B405-9BCD7D4AD8BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1521463-F3F7-48F9-B405-9BCD7D4AD8BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1521463-F3F7-48F9-B405-9BCD7D4AD8BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2980CB7-DB92-4F7A-9260-5864889D3D03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2980CB7-DB92-4F7A-9260-5864889D3D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2980CB7-DB92-4F7A-9260-5864889D3D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2980CB7-DB92-4F7A-9260-5864889D3D03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +65,8 @@ Global
 		{57EE6738-8C9E-45C1-9ADE-0CAA1C895A1C} = {5B137004-334A-4AF0-BF38-F25A12D9EC6D}
 		{86447978-3C49-405C-870C-7031B10FFE42} = {A53CDB1B-278B-4C1B-98BF-EFB3F3CBC6CB}
 		{BDBC65F5-2694-4180-9791-F5A091C72A82} = {5B137004-334A-4AF0-BF38-F25A12D9EC6D}
+		{B1521463-F3F7-48F9-B405-9BCD7D4AD8BF} = {5B137004-334A-4AF0-BF38-F25A12D9EC6D}
+		{D2980CB7-DB92-4F7A-9260-5864889D3D03} = {5B137004-334A-4AF0-BF38-F25A12D9EC6D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B0E106D2-3314-4649-84E9-D928E6474BEB}
