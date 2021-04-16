@@ -9,4 +9,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contexts\Commands\" />
+    <Folder Include="Contexts\Deliveries\" />
+    <Folder Include="Contexts\Products\" />
+    <Folder Include="Contexts\Customers\" />
+  </ItemGroup>
+
 </Project>
