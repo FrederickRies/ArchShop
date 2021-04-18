@@ -18,7 +18,7 @@
     
   
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="IDisposableAnalyzers" Version="3.4.3" />
+    <PackageReference Include="IDisposableAnalyzers" Version="3.4.13" />
   </ItemGroup>
 
   <PropertyGroup>

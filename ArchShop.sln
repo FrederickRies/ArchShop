@@ -25,9 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchShop.Backend.Cqrs", "Sources\Backends\ArchShop.Backend.Cqrs\ArchShop.Backend.Cqrs.csproj", "{BDBC65F5-2694-4180-9791-F5A091C72A82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchShop.Backend.EventSource", "Sources\Backends\ArchShop.Backend.EventSource\ArchShop.Backend.EventSource.csproj", "{B1521463-F3F7-48F9-B405-9BCD7D4AD8BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchShop.Backend.EventSource", "Sources\Backends\ArchShop.Backend.EventSource\ArchShop.Backend.EventSource.csproj", "{B1521463-F3F7-48F9-B405-9BCD7D4AD8BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchShop.GenericHost", "Sources\Backends\ArchShop.GenericHost\ArchShop.GenericHost.csproj", "{D2980CB7-DB92-4F7A-9260-5864889D3D03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchShop.Interface", "Sources\Backends\ArchShop.GenericHost\ArchShop.Interface.csproj", "{D2980CB7-DB92-4F7A-9260-5864889D3D03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
