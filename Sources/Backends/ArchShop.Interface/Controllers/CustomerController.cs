@@ -11,12 +11,12 @@ using static Microsoft.AspNetCore.Http.StatusCodes;
 namespace ArchShop.GenericHost
 {
     [ApiController]
-    public class CatalogController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-        private readonly ILogger<CatalogController> _logger;
+        private readonly ILogger<CustomerController> _logger;
         private readonly IMediator _mediator;
 
-        public CatalogController(ILogger<CatalogController> logger, IMediator mediator)
+        public CustomerController(ILogger<CustomerController> logger, IMediator mediator)
         {
             _logger = logger;
             _mediator = mediator;

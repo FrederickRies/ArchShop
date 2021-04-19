@@ -1,7 +1,7 @@
 ﻿
 namespace ArchShop.GenericHost.Models
 {
-    public class CommandModel
+    public class CustomerOrderDetailsModel
     {
     }
 }

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArchShop.GenericHost\ArchShop.Interface.csproj" />
+    <ProjectReference Include="..\ArchShop.Interface\ArchShop.Interface.csproj" />
   </ItemGroup>
 
 </Project>
