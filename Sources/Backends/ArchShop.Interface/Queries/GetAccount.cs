@@ -3,7 +3,7 @@ using MediatR;
 
 namespace ArchShop.Interface.Queries
 {
-    public class GetCustomerOrder : IRequest<CustomerOrderDetailsModel>
+    public class GetAccount : IRequest<AccountDetailsModel>
     {
     }
 }
