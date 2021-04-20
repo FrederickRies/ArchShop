@@ -50,7 +50,7 @@ namespace ArchShop.GenericHost
         [HttpGet("{productId:guid}")]
         [ProducesResponseType(typeof(ProductDetailsModel), Status200OK)]
         [ProducesResponseType(Status404NotFound)]
-        public async Task<ProductDetailsModel> GetProductAsync(Guid productId, CancellationToken cancellationToken)
+        public async Task<ProductDetailsModel> GetProductDetailsAsync(Guid productId, CancellationToken cancellationToken)
         {
             var query = new GetProductDetails();
             return await _mediator.Send(query, cancellationToken);

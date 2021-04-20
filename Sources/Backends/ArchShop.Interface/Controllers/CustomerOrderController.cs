@@ -78,7 +78,7 @@ namespace ArchShop.GenericHost
         [ProducesResponseType(Status404NotFound)]
         public async Task<CustomerOrderDetailsModel> GetCustomerCommandAsync(Guid orderId, CancellationToken cancellationToken)
         {
-            var query = new GetCustomerOrder();
+            var query = new GetCustomerOrderDetails();
             return await _mediator.Send(query, cancellationToken);
         }
 
