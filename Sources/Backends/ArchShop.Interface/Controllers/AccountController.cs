@@ -18,6 +18,7 @@ namespace ArchShop.GenericHost
     /// All request are related to the currently logged customer.
     /// </remarks>
     [ApiController]
+    [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(typeof(ProblemDetails), Status401Unauthorized)]
     [ProducesResponseType(typeof(ProblemDetails), Status403Forbidden)]
     public class AccountController : ControllerBase
