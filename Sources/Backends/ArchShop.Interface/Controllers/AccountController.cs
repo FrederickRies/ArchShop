@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Net.Mime;
 using System.Threading;
 using System.Threading.Tasks;
 using static Microsoft.AspNetCore.Http.StatusCodes;
