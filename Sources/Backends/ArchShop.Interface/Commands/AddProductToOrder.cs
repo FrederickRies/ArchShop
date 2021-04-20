@@ -2,7 +2,7 @@
 
 namespace ArchShop.Interface.Commands
 {
-    public class PayCustomerOrder : IRequest<Unit>
+    public class AddProductToOrder : IRequest<Unit>
     {
     }
 }

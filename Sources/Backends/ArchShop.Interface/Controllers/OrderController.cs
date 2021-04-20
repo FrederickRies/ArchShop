@@ -23,17 +23,17 @@ namespace ArchShop.GenericHost
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(typeof(ProblemDetails), Status401Unauthorized)]
     [ProducesResponseType(typeof(ProblemDetails), Status403Forbidden)]
-    public class CustomerOrderController : ControllerBase
+    public class OrderController : ControllerBase
     {
-        private readonly ILogger<CustomerOrderController> _logger;
+        private readonly ILogger<OrderController> _logger;
         private readonly IMediator _mediator;
 
         /// <summary>
-        /// Obtain a new instance of the <see cref="CustomerOrderController" /> controller.
+        /// Obtain a new instance of the <see cref="OrderController" /> controller.
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="mediator"></param>
-        public CustomerOrderController(ILogger<CustomerOrderController> logger, IMediator mediator)
+        public OrderController(ILogger<OrderController> logger, IMediator mediator)
         {
             _logger = logger;
             _mediator = mediator;
@@ -46,7 +46,7 @@ namespace ArchShop.GenericHost
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(string), Status200OK)]
-        public async Task<IEnumerable<CustomerOrderModel>> GetCustomerOrdersAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<OrderModel>> GetCustomerOrdersAsync(CancellationToken cancellationToken)
         {
             var query = new GetCustomerOrders();
             return await _mediator.Send(query, cancellationToken);
@@ -58,11 +58,11 @@ namespace ArchShop.GenericHost
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
         [HttpPut]
-        [ProducesResponseType(typeof(CustomerOrderDetailsModel), Status200OK)]
+        [ProducesResponseType(typeof(OrderDetailsModel), Status200OK)]
         [ProducesErrorResponseType(typeof(ValidationProblemDetails))]
         public async Task<IActionResult> CreateCustomerCommandAsync(CancellationToken cancellationToken)
         {
-            var command = new CreateCustomerOrder();
+            var command = new CreateOrder();
             await _mediator.Send(command, cancellationToken);
             return new OkResult();
         }
@@ -74,9 +74,9 @@ namespace ArchShop.GenericHost
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
         [HttpGet("{orderId:guid}")]
-        [ProducesResponseType(typeof(CustomerOrderDetailsModel), Status200OK)]
+        [ProducesResponseType(typeof(OrderDetailsModel), Status200OK)]
         [ProducesResponseType(Status404NotFound)]
-        public async Task<CustomerOrderDetailsModel> GetCustomerCommandAsync(Guid orderId, CancellationToken cancellationToken)
+        public async Task<OrderDetailsModel> GetCustomerCommandAsync(Guid orderId, CancellationToken cancellationToken)
         {
             var query = new GetCustomerOrderDetails();
             return await _mediator.Send(query, cancellationToken);
@@ -99,7 +99,7 @@ namespace ArchShop.GenericHost
         [ProducesErrorResponseType(typeof(ProblemDetails))]
         public async Task<IActionResult> AddProductToCustomerCommandAsync(Guid orderId, Guid productId, CancellationToken cancellationToken)
         {
-            var command = new AddProductToCustomerOrder();
+            var command = new AddProductToOrder();
             await _mediator.Send(command, cancellationToken);
             return new NoContentResult();
         }
@@ -121,7 +121,7 @@ namespace ArchShop.GenericHost
         [ProducesErrorResponseType(typeof(ProblemDetails))]
         public async Task<IActionResult> RemoveProductFromCustomerOrderAsync(Guid orderId, Guid productId, CancellationToken cancellationToken)
         {
-            var command = new RemoveProductFromCustomerOrder();
+            var command = new RemoveProductFromOrder();
             await _mediator.Send(command, cancellationToken);
             return new NoContentResult();
         }
@@ -142,7 +142,7 @@ namespace ArchShop.GenericHost
         [ProducesErrorResponseType(typeof(ProblemDetails))]
         public async Task<IActionResult> PayCustomerOrderAsync(Guid orderId, CancellationToken cancellationToken)
         {
-            var command = new PayCustomerOrder();
+            var command = new PayOrder();
             await _mediator.Send(command, cancellationToken);
             return new AcceptedResult();
         }
@@ -162,7 +162,7 @@ namespace ArchShop.GenericHost
         [ProducesErrorResponseType(typeof(ProblemDetails))]
         public async Task<IActionResult> RemoveCustomerCommandAsync(Guid orderId, CancellationToken cancellationToken)
         {
-            var command = new DeleteCustomerOrder();
+            var command = new DeleteOrder();
             await _mediator.Send(command, cancellationToken);
             return new NoContentResult();
         }

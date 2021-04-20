@@ -18,12 +18,12 @@ namespace ArchShop.GenericHost
     /// All request are scoped to the currently logged customer.
     /// </remarks>
     [ApiController]
-    public class CustomerDeliveryController : ControllerBase
+    public class DeliveryController : ControllerBase
     {
-        private readonly ILogger<CustomerDeliveryController> _logger;
+        private readonly ILogger<DeliveryController> _logger;
         private readonly IMediator _mediator;
 
-        public CustomerDeliveryController(ILogger<CustomerDeliveryController> logger, IMediator mediator)
+        public DeliveryController(ILogger<DeliveryController> logger, IMediator mediator)
         {
             _logger = logger;
             _mediator = mediator;

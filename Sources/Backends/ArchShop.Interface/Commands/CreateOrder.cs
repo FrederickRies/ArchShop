@@ -3,7 +3,7 @@ using MediatR;
 
 namespace ArchShop.Interface.Commands
 {
-    public class CreateCustomerOrder : IRequest<CustomerOrderDetailsModel>
+    public class CreateOrder : IRequest<OrderDetailsModel>
     {
     }
 }
