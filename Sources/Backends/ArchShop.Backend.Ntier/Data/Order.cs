@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ArchShop.Backend.Data
+namespace ArchShop.Data
 {
     public enum OrderStatus
     {
@@ -12,6 +12,6 @@ namespace ArchShop.Backend.Data
     public record Order(
         Guid Id, 
         OrderStatus Status, 
-        Guid CustomerId,
+        Guid AccountId,
         DateTimeOffset CreationDate);
 }

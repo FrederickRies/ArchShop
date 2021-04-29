@@ -1,5 +1,5 @@
 ﻿
-namespace ArchShop.Backend.Business
+namespace ArchShop.Business
 {
     public class OrderLogic
     {

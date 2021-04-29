@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace ArchShop.Backend.Data
+namespace ArchShop.Data
 {
     public record Adress(
         Guid Id, 
-        Guid CustomerId, 
+        Guid AccountId, 
         string Street, 
         string City);
 }

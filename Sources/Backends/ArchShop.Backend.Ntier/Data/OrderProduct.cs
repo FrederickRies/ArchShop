@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ArchShop.Backend.Data
+namespace ArchShop.Data
 {
     public record CommandProduct(
-        Guid CommandId,
+        Guid OrderId,
         Guid ProductId);
 }

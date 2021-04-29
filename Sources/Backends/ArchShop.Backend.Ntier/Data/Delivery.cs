@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ArchShop.Backend.Data
+namespace ArchShop.Data
 {
     public record Delivery(
         Guid Id, 
