@@ -34,8 +34,8 @@ namespace ArchShop.GenericHost
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<ProductModel>), Status200OK)]
-        public async Task<IEnumerable<ProductModel>> GetAllProductsAsync(CancellationToken cancellationToken)
+        [ProducesResponseType(typeof(IEnumerable<ProductListModel>), Status200OK)]
+        public async Task<IEnumerable<ProductListModel>> GetAllProductsAsync(CancellationToken cancellationToken)
         {
             var query = new GetProducts();
             return await _mediator.Send(query, cancellationToken);

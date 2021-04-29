@@ -3,7 +3,7 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	<Nullable>enable</Nullable>
+	  <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -16,7 +16,6 @@
     <PackageReference Include="coverlet.msbuild" Version="2.8.1" />
   </ItemGroup>
     
-  
   <ItemGroup Label="Analyzers">
     <PackageReference Include="IDisposableAnalyzers" Version="3.4.13" />
   </ItemGroup>

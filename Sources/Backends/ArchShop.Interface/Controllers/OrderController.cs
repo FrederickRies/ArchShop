@@ -46,7 +46,7 @@ namespace ArchShop.GenericHost
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(string), Status200OK)]
-        public async Task<IEnumerable<OrderModel>> GetCustomerOrdersAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<OrderListModel>> GetCustomerOrdersAsync(CancellationToken cancellationToken)
         {
             var query = new GetCustomerOrders();
             return await _mediator.Send(query, cancellationToken);
