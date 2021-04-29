@@ -14,5 +14,10 @@ namespace ArchShop.Business
                 lastName);
             return Task.FromResult(account);
         }
+
+        public Task<Account?> GetAccountAsync(Guid accountId)
+        {
+            return Task.FromResult((Account?)null);
+        }
     }
 }
