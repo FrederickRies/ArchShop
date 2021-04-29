@@ -1,16 +1,8 @@
 ﻿using ArchShop.Models;
+using ArchShop.ValueObjects;
 using MediatR;
-using System;
 
 namespace ArchShop.Interfaces.Queries
 {
-    public record GetAccount : IRequest<AccountDetailsModel>
-    {
-        public Guid AccountId { get; }
-
-        public GetAccount(Guid accountId)
-        {
-            AccountId = accountId;
-        }
-    }
+    public record GetAccount(AccountId AccountId) : IRequest<AccountDetailsModel>;
 }

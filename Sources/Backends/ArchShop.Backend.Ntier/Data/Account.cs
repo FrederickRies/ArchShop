@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ArchShop.ValueObjects;
 
 namespace ArchShop.Data
 {
     public record Account(
-        Guid Id, 
+        AccountId Id, 
         string FirstName, 
         string LastName);
 }

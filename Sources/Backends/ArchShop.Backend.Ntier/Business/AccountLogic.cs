@@ -1,4 +1,5 @@
 ﻿using ArchShop.Data;
+using ArchShop.ValueObjects;
 using System;
 using System.Threading.Tasks;
 
@@ -9,13 +10,13 @@ namespace ArchShop.Business
         public Task<Account> CreateAccountAsync(string firstName, string lastName)
         {
             var account = new Account(
-                Guid.NewGuid(),
+                AccountId.New(),
                 firstName,
                 lastName);
             return Task.FromResult(account);
         }
 
-        public Task<Account?> GetAccountAsync(Guid accountId)
+        public Task<Account?> GetAccountAsync(AccountId accountId)
         {
             return Task.FromResult((Account?)null);
         }
