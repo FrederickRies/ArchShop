@@ -1,8 +1,8 @@
-﻿using ArchShop.GenericHost.Models;
+﻿using ArchShop.Models;
 using MediatR;
 using System.Collections.Generic;
 
-namespace ArchShop.Interface.Queries
+namespace ArchShop.Interfaces.Queries
 {
     public class GetCustomerOrders : IRequest<IEnumerable<OrderListModel>>
     {

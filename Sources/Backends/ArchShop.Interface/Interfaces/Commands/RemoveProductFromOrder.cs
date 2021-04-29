@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace ArchShop.Interface.Commands
+namespace ArchShop.Interfaces.Commands
 {
     public class RemoveProductFromOrder : IRequest<Unit>
     {

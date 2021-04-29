@@ -1,7 +1,7 @@
 ﻿
-namespace ArchShop.GenericHost.Models
+namespace ArchShop.Models
 {
-    public class OrderModel
+    public class OrderListModel
     {
     }
 }

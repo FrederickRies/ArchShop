@@ -1,7 +1,7 @@
-﻿using ArchShop.GenericHost.Models;
+﻿using ArchShop.Models;
 using MediatR;
 
-namespace ArchShop.Interface.Queries
+namespace ArchShop.Interfaces.Queries
 {
     public class GetCustomerOrderDetails : IRequest<OrderDetailsModel>
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace ArchShop.GenericHost.Models
+namespace ArchShop.Models
 {
     public class ProductDetailsModel
     {
