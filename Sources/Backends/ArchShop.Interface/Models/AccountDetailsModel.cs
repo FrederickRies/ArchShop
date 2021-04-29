@@ -1,7 +1,6 @@
-﻿
+﻿using System;
+
 namespace ArchShop.Models
 {
-    public class AccountDetailsModel
-    {
-    }
+    public record AccountDetailsModel(Guid Id, string FirstName, string LastName);
 }

@@ -2,7 +2,7 @@
 
 namespace ArchShop.Data
 {
-    public record Customer(
+    public record Account(
         Guid Id, 
         string FirstName, 
         string LastName);

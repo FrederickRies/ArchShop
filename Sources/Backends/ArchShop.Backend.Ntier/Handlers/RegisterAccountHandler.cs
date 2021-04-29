@@ -16,9 +16,15 @@ namespace ArchShop.Handlers
             _accountLogic = accountLogic;
         }
 
-        public Task<AccountDetailsModel> Handle(RegisterAccount request, CancellationToken cancellationToken)
+        public async Task<AccountDetailsModel> Handle(RegisterAccount request, CancellationToken cancellationToken)
         {
-            var account = _accountLogic.CreateAccount(request.FirstName, request.LastName);
+            var account = await _accountLogic.CreateAccountAsync(
+                request.FirstName, 
+                request.LastName);
+            return new AccountDetailsModel(
+                account.Id,
+                account.FirstName,
+                account.LastName);
         }
     }
 }
