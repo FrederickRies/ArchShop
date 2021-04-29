@@ -1,6 +1,6 @@
-﻿using ArchShop.GenericHost.Models;
+﻿using ArchShop.Models;
 using ArchShop.Interfaces.Commands;
-using ArchShop.Interface.Queries;
+using ArchShop.Interfaces.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -56,14 +56,13 @@ namespace ArchShop.GenericHost
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(typeof(AccountDetailsModel), Status200OK)]
         [ProducesResponseType(typeof(ValidationProblemDetails), Status400BadRequest)]
         [ProducesErrorResponseType(typeof(ProblemDetails))]
-        public async Task<AccountDetailsModel> RegisterAsync(CancellationToken cancellationToken)
+        public async Task<AccountDetailsModel> RegisterAsync(RegisterAccount command, CancellationToken cancellationToken)
         {
-            var query = new RegisterAccount();
-            return await _mediator.Send(query, cancellationToken);
+            return await _mediator.Send(command, cancellationToken);
         }
 
         /// <summary>

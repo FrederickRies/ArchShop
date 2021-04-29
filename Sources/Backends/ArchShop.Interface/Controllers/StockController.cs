@@ -1,4 +1,4 @@
-﻿using ArchShop.GenericHost.Models;
+﻿using ArchShop.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
