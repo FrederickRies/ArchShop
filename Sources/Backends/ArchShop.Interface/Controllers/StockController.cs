@@ -1,12 +1,6 @@
-﻿using ArchShop.Models;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using static Microsoft.AspNetCore.Http.StatusCodes;
 
 namespace ArchShop.GenericHost
 {
