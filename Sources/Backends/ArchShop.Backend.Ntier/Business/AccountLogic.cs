@@ -16,9 +16,31 @@ namespace ArchShop.Business
             return Task.FromResult(account);
         }
 
-        public Task<Account?> GetAccountAsync(AccountId accountId)
+
+        public Task<Account> GetAccountAsync(AccountId accountId)
         {
-            return Task.FromResult((Account?)null);
+            Account? account = null;
+            if (account == null)
+            {
+                throw new InvalidOperationException("The account is not found.");
+            }
+            return Task.FromResult(account);
+        }
+
+        public async Task<Address> CreateAddressAsync(AccountId accountId, string street, string city)
+        {
+            var account = await GetAccountAsync(accountId);
+            var address = new Address(
+                Guid.NewGuid(),
+                account.Id,
+                street,
+                city);
+            return address;
+        }
+
+        public async Task RemoveAddressAsync(AccountId accountId, AddressId addressId)
+        {
+            var account = await GetAccountAsync(accountId);
         }
     }
 }

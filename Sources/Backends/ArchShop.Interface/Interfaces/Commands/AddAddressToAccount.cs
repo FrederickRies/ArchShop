@@ -1,9 +1,9 @@
 ﻿using ArchShop.Models;
+using ArchShop.ValueObjects;
 using MediatR;
 
 namespace ArchShop.Interfaces.Commands
 {
-    public class AddAddressToAccount : IRequest<AddressModel>
-    {
-    }
+    public record AddAddressToAccount(AccountId AccountId, string Street, string City) 
+        : IRequest<AddressModel>;
 }

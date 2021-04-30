@@ -54,6 +54,7 @@ namespace ArchShop.GenericHost
         /// <summary>
         /// Create a new account.
         /// </summary>
+        /// <param name="command"></param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
         [HttpPost]
@@ -68,15 +69,15 @@ namespace ArchShop.GenericHost
         /// <summary>
         /// Get all details of a specific customer order.
         /// </summary>
+        /// <param name="command"></param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
-        [HttpPut("address")]
+        [HttpPost("address")]
         [ProducesResponseType(typeof(AddressModel), Status200OK)]
         [ProducesResponseType(typeof(ValidationProblemDetails), Status400BadRequest)]
         [ProducesErrorResponseType(typeof(ProblemDetails))]
-        public async Task<AddressModel> AddAddressAsync(CancellationToken cancellationToken)
+        public async Task<AddressModel> AddAddressAsync(AddAddressToAccount command, CancellationToken cancellationToken)
         {
-            var command = new AddAddressToAccount();
             return await _mediator.Send(command, cancellationToken);
         }
 
@@ -84,13 +85,13 @@ namespace ArchShop.GenericHost
         /// Get all details of a specific customer order.
         /// </summary>
         /// <param name="addressId">The address identifier we want to remove from the account.</param>
+        /// <param name="command"></param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
         [HttpDelete("address/{addressId:guid}")]
         [ProducesResponseType(Status204NoContent)]
-        public async Task<IActionResult> RemoveAddressAsync(Guid addressId, CancellationToken cancellationToken)
+        public async Task<IActionResult> RemoveAddressAsync(Guid addressId, RemoveAddressFromAccount command, CancellationToken cancellationToken)
         {
-            var command = new RemoveAddressFromAccount();
             await _mediator.Send(command, cancellationToken);
             return new NoContentResult();
         }

@@ -1,7 +1,6 @@
-﻿
+﻿using System;
+
 namespace ArchShop.Models
 {
-    public class AddressModel
-    {
-    }
+    public record AddressModel(Guid Id, string Street, string City);
 }

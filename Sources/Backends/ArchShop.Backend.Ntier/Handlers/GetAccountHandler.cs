@@ -3,6 +3,7 @@ using ArchShop.Interfaces.Commands;
 using ArchShop.Interfaces.Queries;
 using ArchShop.Models;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace ArchShop.Handlers
         {
             var account = await _accountLogic.GetAccountAsync(request.AccountId);
             return new AccountDetailsModel(
-                account.Id,
+                account.Id.Value,
                 account.FirstName,
                 account.LastName);
         }
