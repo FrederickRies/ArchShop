@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ArchShop.Interfaces.Queries
 {
-    public class GetCustomerOrders : IRequest<IEnumerable<OrderListModel>>
+    public class GetOrders : IRequest<IEnumerable<OrderListModel>>
     {
     }
 }

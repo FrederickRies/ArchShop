@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArchShop.Interface\ArchShop.Interfaces.csproj" />
+    <ProjectReference Include="..\ArchShop.Interfaces\ArchShop.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

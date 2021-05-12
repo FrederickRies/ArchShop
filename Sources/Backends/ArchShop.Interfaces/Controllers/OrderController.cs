@@ -48,7 +48,7 @@ namespace ArchShop.GenericHost
         [ProducesResponseType(typeof(string), Status200OK)]
         public async Task<IEnumerable<OrderListModel>> GetCustomerOrdersAsync(CancellationToken cancellationToken)
         {
-            var query = new GetCustomerOrders();
+            var query = new GetOrders();
             return await _mediator.Send(query, cancellationToken);
         }
 
@@ -78,7 +78,7 @@ namespace ArchShop.GenericHost
         [ProducesResponseType(Status404NotFound)]
         public async Task<OrderDetailsModel> GetCustomerCommandAsync(Guid orderId, CancellationToken cancellationToken)
         {
-            var query = new GetCustomerOrderDetails();
+            var query = new GetOrderDetails();
             return await _mediator.Send(query, cancellationToken);
         }
 

@@ -10,7 +10,7 @@ namespace ArchShop.Business
         public Task<Account> CreateAccountAsync(string firstName, string lastName)
         {
             var account = new Account(
-                AccountId.New(),
+                AccountId.New,
                 firstName,
                 lastName);
             return Task.FromResult(account);
@@ -31,7 +31,7 @@ namespace ArchShop.Business
         {
             var account = await GetAccountAsync(accountId);
             var address = new Address(
-                Guid.NewGuid(),
+                AddressId.New,
                 account.Id,
                 street,
                 city);
