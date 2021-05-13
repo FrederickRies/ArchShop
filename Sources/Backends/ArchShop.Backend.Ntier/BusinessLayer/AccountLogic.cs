@@ -16,7 +16,6 @@ namespace ArchShop.Business
             return Task.FromResult(account);
         }
 
-
         public Task<Account> GetAccountAsync(AccountId accountId)
         {
             Account? account = null;
