@@ -9,6 +9,7 @@ namespace ArchShop.DataLayer
     {
         public DbSet<Account> Accounts => Set<Account>();
         public DbSet<Address> Addresses => Set<Address>();
+        public DbSet<Order> Orders => Set<Order>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,6 +40,14 @@ namespace ArchShop.DataLayer
             addressBuilder
                 .Property(a => a.City)
                 .HasMaxLength(128);
+
+            // Order mapping
+            var orderBuilder = modelBuilder.Entity<Order>();
+            orderBuilder
+                .Property(o => o.Id)
+                .HasConversion(
+                    f => f.Value,
+                    f => new OrderId(f));
         }
     }
 }
