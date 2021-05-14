@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArchShop.ValueObjects;
+using System;
 
 namespace ArchShop.Data
 {
@@ -10,8 +11,8 @@ namespace ArchShop.Data
     }
 
     public record Order(
-        Guid Id, 
+        OrderId Id, 
         OrderStatus Status, 
-        Guid AccountId,
+        AccountId AccountId,
         DateTimeOffset CreationDate);
 }

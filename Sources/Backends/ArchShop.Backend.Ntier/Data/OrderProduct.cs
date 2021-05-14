@@ -1,8 +1,8 @@
-﻿using System;
+﻿using ArchShop.ValueObjects;
 
 namespace ArchShop.Data
 {
-    public record CommandProduct(
-        Guid OrderId,
-        Guid ProductId);
+    public record OrderProduct(
+        OrderId OrderId,
+        ProductId ProductId);
 }

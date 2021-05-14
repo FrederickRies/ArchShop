@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ArchShop.ValueObjects;
+using System;
 
 namespace ArchShop.Data
 {
     public record Delivery(
-        Guid Id, 
+        DeliveryId Id,
+        OrderId OrderId,
         DateTimeOffset DeliveryDate, 
-        Guid AddressId, 
-        Guid CommandId);
+        AddressId AddressId);
 }

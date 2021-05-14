@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ArchShop.ValueObjects;
 
 namespace ArchShop.Data
 {
     public record Product(
-        Guid Id,
-        string Libelle,
+        ProductId Id,
+        string Label,
+        string Description,
         int RemainingStock);
 }
