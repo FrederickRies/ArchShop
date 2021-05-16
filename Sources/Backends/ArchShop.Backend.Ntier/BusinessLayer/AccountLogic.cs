@@ -1,12 +1,21 @@
 ﻿using ArchShop.Data;
+using ArchShop.DataLayer;
 using ArchShop.ValueObjects;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ArchShop.Business
 {
     public class AccountLogic
     {
+        protected readonly AccountDataLayer _accountDataLayer;
+
+        public AccountLogic(AccountDataLayer accountDataLayer)
+        {
+            _accountDataLayer = accountDataLayer;
+        }
+
         public Task<Account> CreateAccountAsync(string firstName, string lastName)
         {
             var account = new Account(
@@ -16,19 +25,23 @@ namespace ArchShop.Business
             return Task.FromResult(account);
         }
 
-        public Task<Account> GetAccountAsync(AccountId accountId)
+        public async Task<Account> GetAccountAsync(AccountId accountId, CancellationToken cancelationToken)
         {
-            Account? account = null;
+            Account? account = await _accountDataLayer.GetByIdAsync(accountId, cancelationToken);
             if (account == null)
             {
                 throw new InvalidOperationException("The account is not found.");
             }
-            return Task.FromResult(account);
+            return account;
         }
 
-        public async Task<Address> CreateAddressAsync(AccountId accountId, string street, string city)
+        public async Task<Address> CreateAddressAsync(AccountId accountId, string street, string city, CancellationToken cancelationToken)
         {
-            var account = await GetAccountAsync(accountId);
+            Account? account = await _accountDataLayer.GetByIdAsync(accountId, cancelationToken);
+            if (account == null)
+            {
+                throw new InvalidOperationException("The account is not found.");
+            }
             var address = new Address(
                 AddressId.New,
                 account.Id,
@@ -37,9 +50,13 @@ namespace ArchShop.Business
             return address;
         }
 
-        public async Task RemoveAddressAsync(AccountId accountId, AddressId addressId)
+        public async Task RemoveAddressAsync(AccountId accountId, AddressId addressId, CancellationToken cancelationToken)
         {
-            var account = await GetAccountAsync(accountId);
+            Account? account = await _accountDataLayer.GetByIdAsync(accountId, cancelationToken);
+            if (account == null)
+            {
+                throw new InvalidOperationException("The account is not found.");
+            }
         }
     }
 }
