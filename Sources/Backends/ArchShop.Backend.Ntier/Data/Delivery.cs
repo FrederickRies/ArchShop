@@ -6,6 +6,6 @@ namespace ArchShop.Data
     public record Delivery(
         DeliveryId Id,
         OrderId OrderId,
-        DateTimeOffset DeliveryDate, 
-        AddressId AddressId);
+        AddressId AddressId,
+        DateTimeOffset DeliveryDate);
 }

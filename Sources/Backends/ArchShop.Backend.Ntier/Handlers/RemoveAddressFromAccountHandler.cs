@@ -17,10 +17,8 @@ namespace ArchShop.Handlers
 
         public async Task<Unit> Handle(RemoveAddressFromAccount request, CancellationToken cancellationToken)
         {
-            await _accountLogic.RemoveAddressAsync(
-                request.AccountId,
-                request.AddressId);
-            return Unit.Task;
+            await _accountLogic.RemoveAddressAsync(request.AccountId, request.AddressId, cancellationToken);
+            return Unit.Value;
         }
     }
 }

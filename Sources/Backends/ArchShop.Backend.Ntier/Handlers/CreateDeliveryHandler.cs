@@ -9,15 +9,17 @@ namespace ArchShop.Handlers
 {
     public class CreateDeliveryHandler : IRequestHandler<CreateDelivery, DeliveryDetailsModel>
     {
-        private readonly AccountLogic _accountLogic;
+        private readonly DeliveryLogic _deliveryLogic;
 
-        public CreateDeliveryHandler(AccountLogic accountLogic)
+        public CreateDeliveryHandler(DeliveryLogic deliveryLogic)
         {
-            _accountLogic = accountLogic;
+            _deliveryLogic = deliveryLogic;
         }
 
         public async Task<DeliveryDetailsModel> Handle(CreateDelivery request, CancellationToken cancellationToken)
         {
+            var delivery = await _deliveryLogic.CreateAsync(request.OrderId, request.AddressId, request.DeliveryDate);
+            return new DeliveryDetailsModel();
         }
     }
 }
