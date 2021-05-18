@@ -1,8 +1,8 @@
-﻿using MediatR;
+﻿using ArchShop.ValueObjects;
+using MediatR;
 
 namespace ArchShop.Interfaces.Commands
 {
-    public class DeleteOrder : IRequest<Unit>
-    {
-    }
+    public record DeleteOrder(OrderId OrderId)
+        : IRequest<Unit>;
 }

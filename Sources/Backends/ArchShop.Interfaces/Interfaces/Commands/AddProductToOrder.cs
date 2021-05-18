@@ -1,8 +1,8 @@
-﻿using MediatR;
+﻿using ArchShop.ValueObjects;
+using MediatR;
 
 namespace ArchShop.Interfaces.Commands
 {
-    public class AddProductToOrder : IRequest<Unit>
-    {
-    }
+    public record AddProductToOrder(OrderId OrderId, ProductId ProductId, int Count) 
+        : IRequest<Unit>;
 }

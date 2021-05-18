@@ -9,15 +9,17 @@ namespace ArchShop.Handlers
 {
     public class DeleteOrderHandler : IRequestHandler<DeleteOrder, Unit>
     {
-        private readonly AccountLogic _accountLogic;
+        private readonly OrderLogic _orderLogic;
 
-        public DeleteOrderHandler(AccountLogic accountLogic)
+        public DeleteOrderHandler(OrderLogic orderLogic)
         {
-            _accountLogic = accountLogic;
+            _orderLogic = orderLogic;
         }
 
         public async Task<Unit> Handle(DeleteOrder request, CancellationToken cancellationToken)
         {
+            await _orderLogic.RemoveAsync(request.OrderId, cancellationToken);
+            return Unit.Value;
         }
     }
 }

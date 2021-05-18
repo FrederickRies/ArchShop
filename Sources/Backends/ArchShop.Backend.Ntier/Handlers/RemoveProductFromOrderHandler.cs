@@ -9,15 +9,17 @@ namespace ArchShop.Handlers
 {
     public class RemoveProductFromOrderHandler : IRequestHandler<RemoveProductFromOrder, Unit>
     {
-        private readonly AccountLogic _accountLogic;
+        private readonly OrderLogic _orderLogic;
 
-        public RemoveProductFromOrderHandler(AccountLogic accountLogic)
+        public RemoveProductFromOrderHandler(OrderLogic orderLogic)
         {
-            _accountLogic = accountLogic;
+            _orderLogic = orderLogic;
         }
 
         public async Task<Unit> Handle(RemoveProductFromOrder request, CancellationToken cancellationToken)
         {
+            await _orderLogic.RemoveProductAsync(request.OrderId, request.ProductId, cancellationToken);
+            return Unit.Value;
         }
     }
 }

@@ -4,5 +4,6 @@ namespace ArchShop.Data
 {
     public record OrderProduct(
         OrderId OrderId,
-        ProductId ProductId);
+        ProductId ProductId,
+        int Count);
 }

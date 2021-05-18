@@ -21,7 +21,8 @@ namespace ArchShop.Handlers
             var address = await _accountLogic.CreateAddressAsync(
                 request.AccountId,
                 request.Street,
-                request.City);
+                request.City,
+                cancellationToken);
             return new AddressModel(
                 address.Id.Value,
                 address.Street,

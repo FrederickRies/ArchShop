@@ -10,11 +10,11 @@ namespace ArchShop.Handlers
 {
     public class GetOrdersHandler : IRequestHandler<GetOrders, IEnumerable<OrderListModel>>
     {
-        private readonly AccountLogic _accountLogic;
+        private readonly OrderLogic _orderLogic;
 
-        public GetOrdersHandler(AccountLogic accountLogic)
+        public GetOrdersHandler(OrderLogic orderLogic)
         {
-            _accountLogic = accountLogic;
+            _orderLogic = orderLogic;
         }
 
         public async Task<IEnumerable<OrderListModel>> Handle(GetOrders request, CancellationToken cancellationToken)

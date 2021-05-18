@@ -9,15 +9,21 @@ namespace ArchShop.Handlers
 {
     public class AddProductToOrderHandler : IRequestHandler<AddProductToOrder, Unit>
     {
-        private readonly AccountLogic _accountLogic;
+        private readonly OrderLogic _orderLogic;
 
-        public AddProductToOrderHandler(AccountLogic accountLogic)
+        public AddProductToOrderHandler(OrderLogic orderLogic)
         {
-            _accountLogic = accountLogic;
+            _orderLogic = orderLogic;
         }
 
         public async Task<Unit> Handle(AddProductToOrder request, CancellationToken cancellationToken)
         {
+            await _orderLogic.AddProductAsync(
+                request.OrderId,
+                request.ProductId,
+                request.Count,
+                cancellationToken);
+            return Unit.Value;
         }
     }
 }
