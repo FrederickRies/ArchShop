@@ -14,9 +14,10 @@ namespace ArchShop.DataLayer
         {
         }
 
-        public async Task<Account?> GetAsync(AccountId accountId, CancellationToken cancellationToken)
+        public async Task<Account> GetAsync(AccountId accountId, CancellationToken cancellationToken)
         {
-            return await Entities.Where(a => a.Id == accountId).SingleOrDefaultAsync(cancellationToken);
+            var account = await Entities.Where(a => a.Id == accountId).SingleOrDefaultAsync(cancellationToken);
+            return account ?? throw new NoDataException("The account is not found.");
         }
     }
 }

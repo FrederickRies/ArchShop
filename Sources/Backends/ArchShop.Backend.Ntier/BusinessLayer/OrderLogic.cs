@@ -35,26 +35,14 @@ namespace ArchShop.Business
 
         public async Task<Order> GetOrderAsync(OrderId orderId, CancellationToken cancelationToken)
         {
-            Order? order = await _orderDataLayer.GetAsync(orderId, cancelationToken);
-            if (order == null)
-            {
-                throw new InvalidOperationException("The order is not found.");
-            }
-            return order;
+            return await _orderDataLayer.GetAsync(orderId, cancelationToken);
         }
 
         public async Task AddProductAsync(OrderId orderId, ProductId productId, int count, CancellationToken cancelationToken)
         {
-            Order? order = await _orderDataLayer.GetAsync(orderId, cancelationToken);
-            if (order == null)
-            {
-                throw new InvalidOperationException("The order is not found.");
-            }
-            Product? product = await _productDataLayer.GetAsync(productId, cancelationToken);
-            if (product == null)
-            {
-                throw new InvalidOperationException("The product is not found.");
-            }
+            Order order = await _orderDataLayer.GetAsync(orderId, cancelationToken);
+            Product product = await _productDataLayer.GetAsync(productId, cancelationToken);
+
             _orderProductDataLayer.Add(
                 new OrderProduct(
                     order.Id,
@@ -64,22 +52,13 @@ namespace ArchShop.Business
 
         public async Task RemoveProductAsync(OrderId orderId, ProductId productId, CancellationToken cancelationToken)
         {
-            OrderProduct? orderProduct = await _orderProductDataLayer.GetAsync(orderId, productId, cancelationToken);
-            if (orderProduct == null)
-            {
-                throw new InvalidOperationException("The product order is not found.");
-            }
+            OrderProduct orderProduct = await _orderProductDataLayer.GetAsync(orderId, productId, cancelationToken);
             _orderProductDataLayer.Remove(orderProduct);
         }
 
         public async Task RemoveAsync(OrderId orderId, CancellationToken cancelationToken)
         {
-            Order? order = await _orderDataLayer.GetAsync(orderId, cancelationToken);
-            if (order == null)
-            {
-                throw new InvalidOperationException("The order is not found.");
-            }
-            _orderDataLayer.Remove(order);
+            _orderDataLayer.Remove(await _orderDataLayer.GetAsync(orderId, cancelationToken));
         }
     }
 }

@@ -14,9 +14,10 @@ namespace ArchShop.DataLayer
         {
         }
 
-        public async Task<Order?> GetAsync(OrderId orderId, CancellationToken cancellationToken)
+        public async Task<Order> GetAsync(OrderId orderId, CancellationToken cancellationToken)
         {
-            return await Entities.Where(o => o.Id == orderId).SingleOrDefaultAsync(cancellationToken);
+            var order = await Entities.Where(o => o.Id == orderId).SingleOrDefaultAsync(cancellationToken);
+            return order ?? throw new NoDataException("The order is not found.");
         }
     }
 }

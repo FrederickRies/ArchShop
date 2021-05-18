@@ -29,21 +29,12 @@ namespace ArchShop.Business
 
         public async Task<Account> GetAccountAsync(AccountId accountId, CancellationToken cancelationToken)
         {
-            Account? account = await _accountDataLayer.GetAsync(accountId, cancelationToken);
-            if (account == null)
-            {
-                throw new InvalidOperationException("The account is not found.");
-            }
-            return account;
+            return await _accountDataLayer.GetAsync(accountId, cancelationToken);
         }
 
         public async Task<Address> CreateAddressAsync(AccountId accountId, string street, string city, CancellationToken cancelationToken)
         {
-            Account? account = await _accountDataLayer.GetAsync(accountId, cancelationToken);
-            if (account == null)
-            {
-                throw new InvalidOperationException("The account is not found.");
-            }
+            Account account = await _accountDataLayer.GetAsync(accountId, cancelationToken);
             return _addressDataLayer.Add(
                 new Address(
                     AddressId.New,
@@ -54,16 +45,8 @@ namespace ArchShop.Business
 
         public async Task RemoveAddressAsync(AccountId accountId, AddressId addressId, CancellationToken cancelationToken)
         {
-            Account? account = await _accountDataLayer.GetAsync(accountId, cancelationToken);
-            if (account == null)
-            {
-                throw new InvalidOperationException("The account is not found.");
-            }
-            Address? address = await _addressDataLayer.GetAsync(addressId, cancelationToken);
-            if (address == null)
-            {
-                throw new InvalidOperationException("The address is not found.");
-            }
+            Account account = await _accountDataLayer.GetAsync(accountId, cancelationToken);
+            Address address = await _addressDataLayer.GetAsync(addressId, cancelationToken);
             _addressDataLayer.Remove(address);
         }
     }

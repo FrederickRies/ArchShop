@@ -14,9 +14,10 @@ namespace ArchShop.DataLayer
         {
         }
 
-        public async Task<Address?> GetAsync(AddressId addressId, CancellationToken cancellationToken)
+        public async Task<Address> GetAsync(AddressId addressId, CancellationToken cancellationToken)
         {
-            return await Entities.Where(a => a.Id == addressId).SingleOrDefaultAsync(cancellationToken);
+            var address = await Entities.Where(a => a.Id == addressId).SingleOrDefaultAsync(cancellationToken); 
+            return address ?? throw new NoDataException("The address is not found.");
         }
     }
 }

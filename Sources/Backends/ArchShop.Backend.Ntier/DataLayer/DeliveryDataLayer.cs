@@ -16,7 +16,8 @@ namespace ArchShop.DataLayer
 
         public async Task<Delivery?> GetAsync(DeliveryId deliveryId, CancellationToken cancellationToken)
         {
-            return await Entities.Where(d => d.Id == deliveryId).SingleOrDefaultAsync(cancellationToken);
+            var delivery = await Entities.Where(d => d.Id == deliveryId).SingleOrDefaultAsync(cancellationToken);
+            return delivery ?? throw new NoDataException("The delivery is not found.");
         }
     }
 }

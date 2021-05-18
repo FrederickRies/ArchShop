@@ -14,9 +14,10 @@ namespace ArchShop.DataLayer
         {
         }
 
-        public async Task<Product?> GetAsync(ProductId productId, CancellationToken cancellationToken)
+        public async Task<Product> GetAsync(ProductId productId, CancellationToken cancellationToken)
         {
-            return await Entities.Where(p => p.Id == productId).SingleOrDefaultAsync(cancellationToken);
+            var product = await Entities.Where(p => p.Id == productId).SingleOrDefaultAsync(cancellationToken);
+            return product ?? throw new NoDataException("The product is not found.");
         }
     }
 }
