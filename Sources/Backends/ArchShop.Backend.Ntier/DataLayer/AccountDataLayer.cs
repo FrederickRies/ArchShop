@@ -7,18 +7,16 @@ using System.Threading.Tasks;
 
 namespace ArchShop.DataLayer
 {
-    public class AccountDataLayer
+    public class AccountDataLayer : BaseDataLayer<Account>
     {
-        private readonly ArchShopContext _context;
-
-        public AccountDataLayer(ArchShopContext context)
+        public AccountDataLayer(ArchShopContext context) 
+            : base(context)
         {
-            _context = context;
         }
 
-        public async Task<Account?> GetByIdAsync(AccountId accountId, CancellationToken cancellationToken)
+        public async Task<Account?> GetAsync(AccountId accountId, CancellationToken cancellationToken)
         {
-            return await _context.Accounts.Where(a => a.Id == accountId).SingleOrDefaultAsync(cancellationToken);
+            return await Entities.Where(a => a.Id == accountId).SingleOrDefaultAsync(cancellationToken);
         }
     }
 }

@@ -10,24 +10,26 @@ namespace ArchShop.Business
     public class AccountLogic
     {
         protected readonly AccountDataLayer _accountDataLayer;
+        protected readonly AddressDataLayer _addressDataLayer;
 
-        public AccountLogic(AccountDataLayer accountDataLayer)
+        public AccountLogic(AccountDataLayer accountDataLayer, AddressDataLayer addressDataLayer)
         {
             _accountDataLayer = accountDataLayer;
+            _addressDataLayer = addressDataLayer;
         }
 
         public Task<Account> CreateAccountAsync(string firstName, string lastName)
         {
-            var account = new Account(
-                AccountId.New,
-                firstName,
-                lastName);
-            return Task.FromResult(account);
+            return Task.FromResult(_accountDataLayer.Add(
+                new Account(
+                    AccountId.New,
+                    firstName,
+                    lastName)));
         }
 
         public async Task<Account> GetAccountAsync(AccountId accountId, CancellationToken cancelationToken)
         {
-            Account? account = await _accountDataLayer.GetByIdAsync(accountId, cancelationToken);
+            Account? account = await _accountDataLayer.GetAsync(accountId, cancelationToken);
             if (account == null)
             {
                 throw new InvalidOperationException("The account is not found.");
@@ -37,26 +39,32 @@ namespace ArchShop.Business
 
         public async Task<Address> CreateAddressAsync(AccountId accountId, string street, string city, CancellationToken cancelationToken)
         {
-            Account? account = await _accountDataLayer.GetByIdAsync(accountId, cancelationToken);
+            Account? account = await _accountDataLayer.GetAsync(accountId, cancelationToken);
             if (account == null)
             {
                 throw new InvalidOperationException("The account is not found.");
             }
-            var address = new Address(
-                AddressId.New,
-                account.Id,
-                street,
-                city);
-            return address;
+            return _addressDataLayer.Add(
+                new Address(
+                    AddressId.New,
+                    account.Id,
+                    street,
+                    city));
         }
 
         public async Task RemoveAddressAsync(AccountId accountId, AddressId addressId, CancellationToken cancelationToken)
         {
-            Account? account = await _accountDataLayer.GetByIdAsync(accountId, cancelationToken);
+            Account? account = await _accountDataLayer.GetAsync(accountId, cancelationToken);
             if (account == null)
             {
                 throw new InvalidOperationException("The account is not found.");
             }
+            Address? address = await _addressDataLayer.GetAsync(addressId, cancelationToken);
+            if (address == null)
+            {
+                throw new InvalidOperationException("The address is not found.");
+            }
+            _addressDataLayer.Remove(address);
         }
     }
 }

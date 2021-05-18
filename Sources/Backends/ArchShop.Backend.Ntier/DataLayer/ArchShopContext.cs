@@ -7,13 +7,6 @@ namespace ArchShop.DataLayer
 {
     public class ArchShopContext : DbContext
     {
-        public DbSet<Account> Accounts => Set<Account>();
-        public DbSet<Address> Addresses => Set<Address>();
-        public DbSet<Order> Orders => Set<Order>();
-        public DbSet<Product> Products => Set<Product>();
-        public DbSet<OrderProduct> OrderProducts => Set<OrderProduct>();
-        public DbSet<Delivery> Deliveries => Set<Delivery>();
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Account mapping
