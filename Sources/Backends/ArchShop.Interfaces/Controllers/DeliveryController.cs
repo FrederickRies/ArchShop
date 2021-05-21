@@ -8,6 +8,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using static Microsoft.AspNetCore.Http.StatusCodes;
+using ArchShop.ValueObjects;
 
 namespace ArchShop.GenericHost
 {
@@ -37,9 +38,8 @@ namespace ArchShop.GenericHost
         [HttpPut]
         [ProducesResponseType(typeof(DeliveryDetailsModel), Status200OK)]
         [ProducesErrorResponseType(typeof(ValidationProblemDetails))]
-        public async Task<DeliveryDetailsModel> CreateDeliveryAsync(CancellationToken cancellationToken)
+        public async Task<DeliveryDetailsModel> CreateDeliveryAsync(CreateDelivery command, CancellationToken cancellationToken)
         {
-            var command = new CreateDelivery();
             return await _mediator.Send(command, cancellationToken);
         }
 
@@ -54,7 +54,7 @@ namespace ArchShop.GenericHost
         [ProducesResponseType(Status404NotFound)]
         public async Task<DeliveryDetailsModel> GetDeliveryAsync(Guid deliveryId, CancellationToken cancellationToken)
         {
-            var query = new GetDeliveryDetails();
+            var query = new GetDeliveryDetails(new DeliveryId(deliveryId));
             return await _mediator.Send(query, cancellationToken);
         }
     }

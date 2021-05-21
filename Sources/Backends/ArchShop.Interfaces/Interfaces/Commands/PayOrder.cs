@@ -1,8 +1,7 @@
-﻿using MediatR;
+﻿using ArchShop.ValueObjects;
+using MediatR;
 
 namespace ArchShop.Interfaces.Commands
 {
-    public class PayOrder : IRequest<Unit>
-    {
-    }
+    public record PayOrder(OrderId OrderId) : IRequest<Unit>;
 }

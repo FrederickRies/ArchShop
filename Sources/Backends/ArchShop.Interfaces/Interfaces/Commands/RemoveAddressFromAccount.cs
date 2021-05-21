@@ -3,6 +3,6 @@ using MediatR;
 
 namespace ArchShop.Interfaces.Commands
 {
-    public record RemoveAddressFromAccount(AccountId AccountId, AddressId AddressId)
+    public record RemoveAddressFromAccount(AddressId AddressId)
         : IRequest<Unit>;
 }

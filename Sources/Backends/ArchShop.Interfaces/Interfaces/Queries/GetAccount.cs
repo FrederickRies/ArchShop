@@ -4,5 +4,5 @@ using MediatR;
 
 namespace ArchShop.Interfaces.Queries
 {
-    public record GetAccount(AccountId AccountId) : IRequest<AccountDetailsModel>;
+    public record GetAccount() : IRequest<AccountDetailsModel>;
 }

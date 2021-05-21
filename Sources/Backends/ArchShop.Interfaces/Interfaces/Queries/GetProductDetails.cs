@@ -1,9 +1,8 @@
 ﻿using ArchShop.Models;
+using ArchShop.ValueObjects;
 using MediatR;
 
 namespace ArchShop.Interfaces.Queries
 {
-    public class GetProductDetails : IRequest<ProductDetailsModel>
-    {
-    }
+    public record GetProductDetails(ProductId ProductId) : IRequest<ProductDetailsModel>;
 }

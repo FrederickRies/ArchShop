@@ -9,6 +9,7 @@ using System.Net.Mime;
 using System.Threading;
 using System.Threading.Tasks;
 using static Microsoft.AspNetCore.Http.StatusCodes;
+using ArchShop.ValueObjects;
 
 namespace ArchShop.GenericHost
 {
@@ -43,7 +44,7 @@ namespace ArchShop.GenericHost
         /// </summary>
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpGet]
         [ProducesResponseType(typeof(AccountDetailsModel), Status200OK)]
         public async Task<AccountDetailsModel> GetAsync(CancellationToken cancellationToken)
         {
@@ -72,7 +73,7 @@ namespace ArchShop.GenericHost
         /// <param name="command"></param>
         /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns></returns>
-        [HttpPost("address")]
+        [HttpPut("address")]
         [ProducesResponseType(typeof(AddressModel), Status200OK)]
         [ProducesResponseType(typeof(ValidationProblemDetails), Status400BadRequest)]
         [ProducesErrorResponseType(typeof(ProblemDetails))]
@@ -90,8 +91,9 @@ namespace ArchShop.GenericHost
         /// <returns></returns>
         [HttpDelete("address/{addressId:guid}")]
         [ProducesResponseType(Status204NoContent)]
-        public async Task<IActionResult> RemoveAddressAsync(Guid addressId, RemoveAddressFromAccount command, CancellationToken cancellationToken)
+        public async Task<IActionResult> RemoveAddressAsync(Guid addressId, CancellationToken cancellationToken)
         {
+            var command = new RemoveAddressFromAccount(new AddressId(addressId));
             await _mediator.Send(command, cancellationToken);
             return new NoContentResult();
         }

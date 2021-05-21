@@ -9,6 +9,7 @@ using System.Net.Mime;
 using System.Threading;
 using System.Threading.Tasks;
 using static Microsoft.AspNetCore.Http.StatusCodes;
+using ArchShop.ValueObjects;
 
 namespace ArchShop.GenericHost
 {
@@ -37,8 +38,7 @@ namespace ArchShop.GenericHost
         [ProducesResponseType(typeof(IEnumerable<ProductListModel>), Status200OK)]
         public async Task<IEnumerable<ProductListModel>> GetAllProductsAsync(CancellationToken cancellationToken)
         {
-            var query = new GetProducts();
-            return await _mediator.Send(query, cancellationToken);
+            return await _mediator.Send(new GetProducts(), cancellationToken);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace ArchShop.GenericHost
         [ProducesResponseType(Status404NotFound)]
         public async Task<ProductDetailsModel> GetProductDetailsAsync(Guid productId, CancellationToken cancellationToken)
         {
-            var query = new GetProductDetails();
+            var query = new GetProductDetails(new ProductId(productId));
             return await _mediator.Send(query, cancellationToken);
         }
     }
